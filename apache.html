@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Apache</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="data.js"></script>
+</head>
+<body>
+    <div class="topnav">
+        <a href="apache.html">Apache</a>
+        <a href="chaoss.html">CHAOSS</a>
+        <a href="comcast.html">Comcast</a>
+        <a href="graphQL.html">GraphQL</a>
+        <a href="mhs.html">MHS</a>
+        <a href="netflix.html">Netflix</a>
+        <a href="rails.html">Rails</a>
+        <a href="senaite.html">Senaite</a>
+        <a href="zephyr.html">Zephyr</a>
+    </div>
+    <h1 id="repoGroup">Apache Ecosystem</h1>
+    <h3>Pull Acceptance Rate</h3>
+    <div class="chart" id="barChart" align="center"></div>
+    <h4>Select a Repository for Top Committers and Code Changes Data</h4>
+    <select>
+<!--        repositories-->
+    </select>
+    <div id="pieChart" align="center"></div>
+    <div id="lineChart" align="center"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            //http://augur.osshealth.io:5000/api/unstable/repo-groups/24/pull-request-acceptance-rate?group_by=month
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Rate'],
+                ['2019-02', 81.4782608696],
+                ['2019-03', 54.9487179487],
+                ['2019-04', 72.28125],
+                ['2019-05', 38.1147540984],
+                ['2019-06', 24.6276595745],
+                ['2019-07', 40.2857142857], 
+                ['2019-08', 40.619047619], 
+                ['2019-09', 55.1578947368], 
+                ['2019-10', 46.1538461538]
+            ]);
+            var options = {'title':'', width:1200, height:500};
+            var barChart = new google.visualization.ColumnChart(
+            document.getElementById('barChart'));
+            barChart.draw(data, options);
+            
+            //http://augur.osshealth.io:5000/api/unstable/repo-groups/24/repos/23057/top-committers
+            var data = google.visualization.arrayToDataTable([
+                ['Email', 'Commits'],
+                ['sunilg@apache.org', 11],
+                ['aajisaka@apache.org', 8],
+                ['rohithsharmaks@cloudera.com', 4],
+                ['ztang@apache.org', 4],
+                ['aengineer@apache.org', 3],
+                ['vagarychen@apache.org', 3], 
+                ['ajay@apache.org', 2], 
+                ['other_contributors', 35]
+            ]);
+            var options = {'title':'Top Committers in hadoop-site', width:1200, height:650};
+            var pieChart = new google.visualization.PieChart(
+            document.getElementById('pieChart'));
+            pieChart.draw(data, options);
+            
+            //http://augur.osshealth.io:5000/api/unstable/repo-groups/24/repos/23057/code-changes?period=month
+            var data = google.visualization.arrayToDataTable([
+                ['Month', 'Commits'],
+                ['2018-06', 6],
+                ['2018-08', 1],
+                ['2018-09', 21],
+                ['2018-10', 11],
+                ['2018-11', 8],
+                ['2018-12', 9], 
+                ['2019-01', 15], 
+                ['2019-02', 10],
+                ['2019-03', 8],
+                ['2019-04', 2],
+                ['2019-05', 6],
+                ['2019-06', 4],
+                ['2019-07', 6],
+                ['2019-08', 3],
+                ['2019-09', 7],
+                ['2019-10', 9],
+            ]);
+            var options = {'title':'Code Changes', width:1200, height:600};
+            var lineChart = new google.visualization.LineChart(document.getElementById('lineChart'));
+            lineChart.draw(data, options);
+        }
+    </script>
+
+</body>
+</html>
