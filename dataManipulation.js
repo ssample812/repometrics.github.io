@@ -36,6 +36,7 @@ function getPRData(group) {
 
 function getRepo() {
     var group = document.getElementById("repoGroup").getAttribute("group");    
+
      let dropdown = document.getElementById('repos');
     dropdown.length = 0;
 
@@ -61,7 +62,6 @@ function getRepo() {
                 option.value = data[i].repo_id;
                 dropdown.add(option);
             }
-            
         } 
     };
 
@@ -101,10 +101,8 @@ function getCommitData(group, repo) {
             var pieChart = new google.visualization.PieChart(
                 document.getElementById('pieChart'));
                 pieChart.draw(commitData, options);
-           
         } 
     };
-
 
     xhttp.send();
 }
@@ -135,4 +133,3 @@ function getLineData(group, repo) {
     xhttp.send();
    
 }
-
