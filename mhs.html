@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Mission</title>
+    <title>MHS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <script src="data.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="dataManipulation.js"></script>
 </head>
 <body>
     <div class="topnav">
-        <a href="home.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="apache.html">Apache</a>
         <a href="chaoss.html">CHAOSS</a>
         <a href="comcast.html">Comcast</a>
@@ -19,38 +20,15 @@
         <a href="senaite.html">Senaite</a>
         <a href="zephyr.html">Zephyr</a>
     </div>
-    <h1>Mission Hydro Sci</h1>
-    
-    <div class="chart" id="barChart"></div>
-    
-    <select id="groups"></select>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script type="text/javascript">
-    // Load google charts
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Draw the chart and set the chart values
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work', 8],
-                ['Eat', 2],
-                ['TV', 4],
-                ['Gym', 2],
-                ['Sleep', 8]
-            ]);
-
-        // Optional; add a title and set the width and height of the chart
-        var options = {'title':'Pull Request Acceptance', 'width':550, 'height':400};
-        
-        // Display the chart inside the <div> element with id="piechart"
-        var barChart = new google.visualization.ColumnChart(
-        document.getElementById('barChart'));
-        barChart.draw(data, options);
-    }
-    </script>
-
+    <h1 id="repoGroup" group="25152">Mission Hydro Sci</h1>
+    <div class="chart" id="barChart" align="center"></div>
+    <div>
+        <h4>Select a Repository for Top Committers and Code Changes Data:</h4>
+        <button type="submit" onclick="getRepo()">Get Repo</button>
+        <select id="repos"></select>
+        <button type="submit" onclick="drawRepoChart()">Go</button>
+    </div>
+    <div id="pieChart" align="center"></div>
+    <div id="lineChart" align="center"></div>
 </body>
 </html>
