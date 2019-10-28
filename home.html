@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Apache</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="dataManipulation.js"></script>
+</head>
+<body>
+    <div class="topnav">
+        <a href="home.html">Home</a>
+        <a href="apache.html">Apache</a>
+        <a href="chaoss.html">CHAOSS</a>
+        <a href="comcast.html">Comcast</a>
+        <a href="graphQL.html">GraphQL</a>
+        <a href="mhs.html">MHS</a>
+        <a href="netflix.html">Netflix</a>
+        <a href="rails.html">Rails</a>
+        <a href="senaite.html">Senaite</a>
+        <a href="zephyr.html">Zephyr</a>
+    </div>
+    <h1 id="repoGroup" group="24">Apache Ecosystem</h1>
+    <div class="chart" id="barChart" align="center"></div>
+    <div class=wrapper>
+        <h4>Select a Repository for Top Committers and Code Changes Data:</h4>
+        <button type="submit" onclick="getRepo()">Get Repo</button>
+        <select id="repos"></select>
+        <button type="submit" onclick="drawRepoChart()">Go</button>
+    </div>
+    <div id="pieChart" align="center"></div>
+    <div id="lineChart" align="center"></div>
+</body>
+</html>
