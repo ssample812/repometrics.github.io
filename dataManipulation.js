@@ -97,7 +97,7 @@ function getCommitData(group, repo) {
             }
             console.log(commits);
             commitData = google.visualization.arrayToDataTable(commits);
-            var options = {'title':'Top Committers in hadoop-site', width:1200, height:650};
+            var options = {'title':'Top Committers', width:1200, height:650};
             var pieChart = new google.visualization.PieChart(
                 document.getElementById('pieChart'));
                 pieChart.draw(commitData, options);
